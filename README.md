@@ -1,62 +1,17 @@
-# AirBnB Clone Project
+# Project Name
 
-## Command Interpretation
-This is the first step towards building your first full web application: the AirBnB clone. This first step is very important because you will use what you build during this project with all other following projects: HTML/CSS templating, database storage, API, front-end integration…
+This project is a command-line interpreter (CLI) built with Python.
 
-## Key Components
+## Description
 
-* BaseModel Class
-* Serialization/Deserialization Flow
-* AirBnB Classes
-* File Storage Engine
-* Unittests
+The command interpreter provides a user-friendly interface for interacting with the system via the command line. It allows users to execute various commands and perform tasks efficiently.
 
-## What is a Command Interpreter?
-Do you remember the Shell? It’s exactly the same but limited to a specific use-case. In our case, we want to be able to manage the objects of our project:
+## Command Interpreter
 
-* Create a new object (ex: a new User or a new Place)
-* Retrieve an object from a file, a database etc…
-* Do operations on objects (count, compute stats, etc…)
-* Update attributes of an object
-* Destroy an object
+### How to Start
 
-## CLI Usage
+To start the command interpreter, simply run the script `interpreter.py` from the command line.
 
-### In interactive mode
-```
-	$ ./console.py
-(hbnb) help
+```bash
+./interpreter.py
 
-Documented commands (type help <topic>):
-========================================
-EOF  help  quit
-
-(hbnb) 
-(hbnb) 
-(hbnb) quit
-$
-```
-
-### in non-interactive mode
-
-```
-	 echo "help" | ./console.py
-(hbnb)
-
-Documented commands (type help <topic>):
-========================================
-EOF  help  quit
-(hbnb) 
-$
-$ cat test_help
-help
-$
-$ cat test_help | ./console.py
-(hbnb)
-
-Documented commands (type help <topic>):
-========================================
-EOF  help  quit
-(hbnb) 
-$
-```
