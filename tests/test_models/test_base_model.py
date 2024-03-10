@@ -3,6 +3,7 @@
 import unittest
 from models.base_model import BaseModel
 
+
 class TestBaseModel(unittest.TestCase):
     def test_create_instance(self):
         # Test creating an instance of BaseModel
