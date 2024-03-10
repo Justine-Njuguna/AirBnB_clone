@@ -20,7 +20,3 @@ def my_function():
     This function demonstrates adherence to project requirements.
     """
     pass
-
-
-if __name__ == "__main__":
-    pass
