@@ -6,13 +6,31 @@ from datetime import datetime
 
 
 class BaseModel:
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """
         Initializes a BaseModel instance.
+
+        Args:
+            kwargs (dict): Dict containing attribute names and their values.
         """
-        self.id = str(uuid.uuid4())  # Generate a unique ID
-        self.created_at = datetime.now()
-        self.updated_at = self.created_at
+        if kwargs:
+            # Recreate instance from dictionary representation
+            for key, value in kwargs.items():
+                if key == '__class__':
+                    continue  # Skip '__class__' attribute
+                elif key in ('created_at', 'updated_at'):
+                    # Convert string to datetime object
+                    setattr(
+                            self,
+                            key,
+                            datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f"))
+                else:
+                    setattr(self, key, value)
+        else:
+            # Create a new instance with unique ID and current timestamp
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = self.created_at
 
     def __str__(self):
         """
@@ -22,13 +40,13 @@ class BaseModel:
 
     def save(self):
         """
-        Updates the public inst attr updated_at with the cur datetime.
+        Updates the public inst attr updated_at with the current datetime.
         """
         self.updated_at = datetime.now()
 
     def to_dict(self):
         """
-        Returns a dict containing keys/values of __dict__ of the inst
+        Returns a dict containing keys/values of __dict__ of the inst.
         """
         obj_dict = self.__dict__.copy()
         obj_dict['__class__'] = self.__class__.__name__
