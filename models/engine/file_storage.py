@@ -2,7 +2,6 @@
 
 
 import json
-from models.base_model import BaseModel
 import os
 from os.path import exists
 import datetime
@@ -39,3 +38,6 @@ class FileStorage:
                 class_name, obj_id = key.split('.')
                 cls = eval(class_name)
                 self.__objects[key] = cls(**value)
+
+from models.base_model import BaseModel
+storage = FileStorage()
