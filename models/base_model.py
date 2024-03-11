@@ -6,7 +6,7 @@ from datetime import datetime
 
 
 class BaseModel:
-    from .engine.file_storage import FileStorage
+    #from .engine.file_storage import FileStorage
     storage = FileStorage()
 
     def __init__(self, *args, **kwargs):

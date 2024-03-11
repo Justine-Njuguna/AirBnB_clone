@@ -4,6 +4,7 @@ This module defines the HBNBCommand class, Console entry point.
 """
 
 import cmd
+from models.user import User
 from models.base_model import BaseModel
 from models.__init__ import storage
 
@@ -17,18 +18,22 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, arg):
         """
-        Create a new instance of BaseModel, save it, and print the ID.
+        Create a new instance of BaseModel or User, save it, and print the ID.
         """
         if not arg:
             print("** class name missing **")
             return
 
         class_name = arg.split()[0]
-        if class_name not in ["BaseModel"]:  # Add other class names as needed
+        if class_name not in ["BaseModel", "User"]:
             print("** class doesn't exist **")
             return
 
-        new_instance = BaseModel()
+        if class_name == "BaseModel":
+            new_instance = BaseModel()
+        elif class_name == "User":
+            new_instance = User()
+
         storage.save()
         print(new_instance.id)
 
@@ -42,7 +47,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         class_name = args[0]
-        if class_name not in ["BaseModel"]:  # Add other class names as needed
+        if class_name not in ["BaseModel", "User"]:
             print("** class doesn't exist **")
             return
 
@@ -68,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         class_name = args[0]
-        if class_name not in ["BaseModel"]:  # Add other class names as needed
+        if class_name not in ["BaseModel", "User"]:
             print("** class doesn't exist **")
             return
 
@@ -90,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
         Print all string representations of instances.
         """
         class_name = arg.split()[0] if arg else None
-        if class_name and class_name not in ["BaseModel"]:
+        if class_name and class_name not in ["BaseModel", "User"]:
             print("** class doesn't exist **")
             return
 
@@ -114,7 +119,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         class_name = args[0]
-        if class_name not in ["BaseModel"]:  # Add other class names as needed
+        if class_name not in ["BaseModel", "User"]:
             print("** class doesn't exist **")
             return
 
