@@ -2,8 +2,8 @@
 
 
 import uuid
+import FileStorage
 from datetime import datetime
-from models.__init__ import storage
 
 
 class BaseModel:
@@ -44,3 +44,9 @@ class BaseModel:
         obj_dict['created_at'] = self.created_at.isoformat()
         obj_dict['updated_at'] = self.updated_at.isoformat()
         return obj_dict
+
+    def __str__(self):
+        """
+        Returns a string representation of the BaseModel instance.
+        """
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
