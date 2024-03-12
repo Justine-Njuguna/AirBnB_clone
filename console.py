@@ -6,6 +6,11 @@ This module defines the HBNBCommand class, Console entry point.
 import cmd
 from models.user import User
 from models.base_model import BaseModel
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 from models.__init__ import storage
 
 
@@ -25,7 +30,14 @@ class HBNBCommand(cmd.Cmd):
             return
 
         class_name = arg.split()[0]
-        if class_name not in ["BaseModel", "User"]:
+        if class_name not in [
+                "BaseModel",
+                "User",
+                "Place",
+                "State",
+                "City",
+                "Amenity",
+                "Review"]:
             print("** class doesn't exist **")
             return
 
@@ -33,6 +45,16 @@ class HBNBCommand(cmd.Cmd):
             new_instance = BaseModel()
         elif class_name == "User":
             new_instance = User()
+        elif class_name == "Place":
+            new_instance = Place()
+        elif class_name == "State":
+            new_instance = State()
+        elif class_name == "City":
+            new_instance = City()
+        elif class_name == "Amenity":
+            new_instance = Amenity()
+        elif class_name == "Review":
+            new_instance = Review()
 
         storage.save()
         print(new_instance.id)
@@ -47,7 +69,14 @@ class HBNBCommand(cmd.Cmd):
             return
 
         class_name = args[0]
-        if class_name not in ["BaseModel", "User"]:
+        if class_name not in [
+                "BaseModel",
+                "User",
+                "Place",
+                "State",
+                "City",
+                "Amenity",
+                "Review"]:
             print("** class doesn't exist **")
             return
 

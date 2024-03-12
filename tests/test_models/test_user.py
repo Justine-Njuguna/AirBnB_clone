@@ -45,20 +45,20 @@ class TestUser(unittest.TestCase):
 
     def test_invalid_email(self):
         with self.assertRaises(ValueError):
-            self.user.email = "invalid_email"
+            user = User(email="invalid_email")
 
     def test_invalid_password(self):
         with self.assertRaises(ValueError):
-            self.user.password = ""
+            User(email="user@example.com", password="")
 
     def test_invalid_first_name(self):
         with self.assertRaises(ValueError):
-            self.user.first_name = ""
+            User(email="user@example.com", password="password", first_name="")
 
     def test_invalid_last_name(self):
         with self.assertRaises(ValueError):
-            self.user.last_name = ""
-
+            User(email="user@example.com", password="password", last_name="")
+            
     def test_save_reload(self):
         user = User(
                 email="test@example.com",
