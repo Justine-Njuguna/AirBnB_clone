@@ -5,7 +5,6 @@ import json
 import os
 from os.path import exists
 import datetime
-from models.user import User
 
 
 class FileStorage:
@@ -31,6 +30,10 @@ class FileStorage:
 
     def reload(self):
         """Reloads the stored objects"""
+        from models.user import User
+        from models.base_model import BaseModel
+
+
         if not os.path.isfile(FileStorage.__file_path):
             return
         with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
@@ -45,4 +48,4 @@ class FileStorage:
 
 
 #from models.base_model import BaseModel
-storage = FileStorage()
+#from .engine.file_storage

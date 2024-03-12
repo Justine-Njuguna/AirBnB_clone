@@ -3,11 +3,12 @@
 
 import uuid
 from datetime import datetime
-
+#from .engine.file_storage import FileStorage
+from . import storage
 
 class BaseModel:
     #from .engine.file_storage import FileStorage
-    storage = FileStorage()
+    #storage = FileStorage()
 
     def __init__(self, *args, **kwargs):
         """
@@ -28,7 +29,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())  # Generate a unique ID
             self.created_at = datetime.now()
             self.updated_at = self.created_at
-            BaseModel.storage.new(self)
+            storage.new(self)
 
     def save(self):
         """
