@@ -3,13 +3,22 @@
 
 from models.__init__ import storage
 import unittest
-#from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 import os
+import json
+from datetime import datetime
+from models.engine.file_storage import FileStorage
+from models.user import User
+from models.state import State
+from models.place import Place
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 
 
 class TestFileStorage(unittest.TestCase):
     def setUp(self):
+        from models.engine.file_storage import FileStorage
         self.storage = FileStorage()
         self.model1 = BaseModel()
         self.model2 = BaseModel()

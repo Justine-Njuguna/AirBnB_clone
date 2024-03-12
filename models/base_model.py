@@ -3,12 +3,10 @@
 
 import uuid
 from datetime import datetime
-#from .engine.file_storage import FileStorage
 from . import storage
 
+
 class BaseModel:
-    #from .engine.file_storage import FileStorage
-    #storage = FileStorage()
 
     def __init__(self, *args, **kwargs):
         """
